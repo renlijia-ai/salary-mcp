@@ -1,14 +1,15 @@
-import { rljN_const } from "../constants/index.js";
+import { rljN_const, apiPerfix, AI_MCP_TOKEN } from "../constants/index.js";
 
 // 总方法
 export class Client {
-  private baseUrl: string = "https://test-salary.renlijia.com";
+  private baseUrl: string = apiPerfix;
   private headers: { [key: string]: string };
 
   constructor(rljN: string) {
     this.headers = {
       "rlj-n": rljN_const || rljN,
       "content-type": "application/json",
+      AI_MCP_TOKEN: AI_MCP_TOKEN!,
     };
   }
 

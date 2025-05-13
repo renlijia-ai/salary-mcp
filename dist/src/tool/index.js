@@ -650,4 +650,53 @@ export const MAPS_TOOLS = [
             },
         }, ["salaryGroupId", "salarySettingItemVO"]),
     },
+    {
+        name: "salarySetting_generateItemGroup",
+        description: `新增 薪资项分组
+    `,
+        inputSchema: getInputSchema({
+            itemGroupName: {
+                type: "string",
+                description: `薪资项分组的名称
+    `,
+            },
+            remark: {
+                type: "string",
+                description: `备注信息
+  `,
+            },
+            salaryGroupId: {
+                type: "string",
+                description: `薪资组 id 
+    `,
+            },
+        }, []),
+    },
+    {
+        name: "salarySetting_editItemGroup",
+        description: `修改 薪资项分组
+    `,
+        inputSchema: getInputSchema({
+            itemGroupName: {
+                type: "string",
+                description: `薪资项分组的名称
+    `,
+            },
+            remark: {
+                type: "string",
+                description: `备注信息
+  `,
+            },
+            salaryGroupId: {
+                type: "string",
+                description: `薪资组 id 
+    `,
+            },
+            itemGroupId: {
+                type: "string",
+                description: `薪资分组 id 
+`,
+            },
+        }, []),
+    },
 ];
