@@ -160,7 +160,7 @@ export const MAPS_TOOLS: Tool[] = [
       {
         calBizId: {
           type: "string",
-          description: "试算月份",
+          description: "试算月份 202505M",
         },
         refresh: {
           type: "boolean",
