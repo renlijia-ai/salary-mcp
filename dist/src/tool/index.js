@@ -6,12 +6,12 @@ const getInputSchema = (properties, required) => {
                 type: "string",
                 description: "登录token",
             },
+            env: {
+                type: "string",
+                description: "环境",
+                enum: ["prod", "pre", "test", "daily"],
+            },
             ...properties,
-        },
-        env: {
-            type: "string",
-            description: "环境",
-            enum: ["prod", "pre", "test", "daily"],
         },
         required: ["rljN", "env", ...required],
     };
