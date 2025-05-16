@@ -1,5 +1,4 @@
 import { Tool } from "@modelcontextprotocol/sdk/types.js";
-import { rljN_const } from "../constants/index.js";
 
 const getInputSchema = (
   properties: Tool["inputSchema"]["properties"],
@@ -7,20 +6,38 @@ const getInputSchema = (
 ): Tool["inputSchema"] => {
   return {
     type: "object",
-    properties: rljN_const
-      ? properties
-      : {
-          rljN: {
-            type: "string",
-            description: "登录token",
-          },
-          ...properties,
-        },
-    required: rljN_const ? required : ["rljN", ...required],
+    properties: {
+      rljN: {
+        type: "string",
+        description: "登录token",
+      },
+      ...properties,
+    },
+    env: {
+      type: "string",
+      description: "环境",
+      enum: ["prod", "pre", "test", "daily"],
+    },
+    required: ["rljN", "env", ...required],
   };
 };
 
 export const MAPS_TOOLS: Tool[] = [
+  {
+    name: "salaryGroup_get_excel_info",
+    description: `获取excel的sheet的信息
+    返回值: 包含所有的sheet信息，以字符串的形式返回
+    `,
+    inputSchema: getInputSchema(
+      {
+        fileUrl: {
+          type: "string",
+          description: "文件oss地址",
+        },
+      },
+      ["fileUrl"]
+    ),
+  },
   {
     name: "salaryGroup_indexList",
     description: `薪资组列表信息 、可以通过薪资组名称搜索薪资组信息

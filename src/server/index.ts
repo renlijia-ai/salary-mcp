@@ -1,13 +1,22 @@
 import { CallToolRequest } from "@modelcontextprotocol/sdk/types.js";
 import { Client } from "./client.js";
+import { apiPrefixMapping } from "../constants/index.js";
+import { convertExcelUrlToHtml } from "./utils.js";
 
 export const switchApi = async (request: CallToolRequest) => {
   const params = { ...request.params.arguments };
-  const client = new Client(params.rljN as string);
+  const client = new Client(
+    params.rljN as string,
+    apiPrefixMapping[params.env as string]
+  );
 
   let response;
 
   switch (request.params.name) {
+    case "salaryGroup_get_excel_info": {
+      response = await convertExcelUrlToHtml(params.fileUrl as string);
+      break;
+    }
     case "salaryGroup_indexList": {
       response = await client.post("rest/api/v1/salaryGroup/indexList", params);
       break;

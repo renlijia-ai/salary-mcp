@@ -1,4 +1,7 @@
-export const apiPerfix = "https://test-salary.renlijia.com";
-export const rljN_const = "";
-// export const rljN_const = process.env.TOKEN;
+export const apiPrefixMapping = {
+    daily: "https://daily-salary.renlijia.com/rest/api",
+    test: "https://test-salary.renlijia.com/rest/api",
+    pre: "https://pre-salary.renlijia.com/rest/api",
+    prod: "https:/salary.eapps.dingtalkcloud.com/rest/api",
+};
 export const AI_MCP_TOKEN = process.env.AI_MCP_TOKEN;

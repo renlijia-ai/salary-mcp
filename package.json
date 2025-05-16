@@ -1,6 +1,6 @@
 {
   "name": "mcp-server-salary-web",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "MCP server for using the salary Web API",
   "license": "MIT",
   "homepage": "",
@@ -20,7 +20,8 @@
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.0.1",
     "@types/node-fetch": "^2.6.12",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
   },
   "devDependencies": {
     "shx": "^0.3.4",

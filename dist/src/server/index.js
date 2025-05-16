@@ -1,9 +1,15 @@
 import { Client } from "./client.js";
+import { apiPrefixMapping } from "../constants/index.js";
+import { convertExcelUrlToHtml } from "./utils.js";
 export const switchApi = async (request) => {
     const params = { ...request.params.arguments };
-    const client = new Client(params.rljN);
+    const client = new Client(params.rljN, apiPrefixMapping[params.env]);
     let response;
     switch (request.params.name) {
+        case "salaryGroup_get_excel_info": {
+            response = await convertExcelUrlToHtml(params.fileUrl);
+            break;
+        }
         case "salaryGroup_indexList": {
             response = await client.post("rest/api/v1/salaryGroup/indexList", params);
             break;

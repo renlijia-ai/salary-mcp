@@ -1,14 +1,15 @@
-import { rljN_const, apiPerfix, AI_MCP_TOKEN } from "../constants/index.js";
+import { AI_MCP_TOKEN } from "../constants/index.js";
 // 总方法
 export class Client {
-    baseUrl = apiPerfix;
+    baseUrl = "";
     headers;
-    constructor(rljN) {
+    constructor(rljN, baseUrl) {
         this.headers = {
-            "rlj-n": rljN_const || rljN,
+            "rlj-n": rljN,
             "content-type": "application/json",
             AI_MCP_TOKEN: AI_MCP_TOKEN,
         };
+        this.baseUrl = baseUrl;
     }
     async get(api, data) {
         const url = new URL(`${this.baseUrl}/${api}`);
@@ -37,7 +38,6 @@ export class Client {
                 url.searchParams.append(key, params[key]);
             });
         }
-        console.log(url.toString(), "postUrl");
         // 表单数据
         const formData = new FormData();
         Object.keys(data).forEach((key) => {
