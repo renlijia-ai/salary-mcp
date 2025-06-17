@@ -1,5 +1,5 @@
 {
-  "name": "mcp-server-salary-web",
+  "name": "@rlj/mcp-server-salary-web",
   "version": "0.0.10",
   "description": "MCP server for using the salary Web API",
   "license": "MIT",
@@ -26,5 +26,8 @@
   "devDependencies": {
     "shx": "^0.3.4",
     "typescript": "^5.6.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
