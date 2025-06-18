@@ -1,13 +1,13 @@
 import { CallToolRequest } from "@modelcontextprotocol/sdk/types.js";
 import { Client } from "./client.js";
-import { apiPrefixMapping } from "../constants/index.js";
+import { apiPrefixMapping, ENV } from "../constants/index.js";
 import { convertExcelUrlToHtml } from "./utils.js";
 
 export const switchApi = async (request: CallToolRequest) => {
   const params = { ...request.params.arguments };
   const client = new Client(
     params.rljN as string,
-    apiPrefixMapping[params.env as string]
+    apiPrefixMapping[(ENV || "prod") as string],
   );
 
   let response;
@@ -24,42 +24,42 @@ export const switchApi = async (request: CallToolRequest) => {
     case "salarySetting_querySalarySetting": {
       response = await client.post(
         "rest/api/v2/salarySetting/querySalarySetting",
-        params
+        params,
       );
       break;
     }
     case "salarySetting_saveSalaryItemList": {
       response = await client.post(
         "rest/api/v3/salarySetting/saveSalaryItemList",
-        params
+        params,
       );
       break;
     }
     case "salaryBasePay_saveOneBasepayConfig": {
       response = await client.post(
         "rest/api/v1/salaryBasePay/saveOneBasepayConfig",
-        params
+        params,
       );
       break;
     }
     case "salaryBasePay_queryConfig": {
       response = await client.post(
         "rest/api/v1/salaryBasePay/queryConfig",
-        params
+        params,
       );
       break;
     }
     case "salaryBasePay_getHrmField": {
       response = await client.post(
         "rest/api/v1/salaryBasePay/getHrmField",
-        params
+        params,
       );
       break;
     }
     case "salarySetting_getTemSalaryItemByAi": {
       response = await client.post(
         "rest/api/v1/salarySetting/getTemSalaryItemByAi",
-        params
+        params,
       );
       break;
     }
@@ -71,7 +71,7 @@ export const switchApi = async (request: CallToolRequest) => {
     case "salarySetting_saveSalaryItemList_socialSecurityData": {
       response = await client.post(
         "rest/api/v3/salarySetting/saveSalaryItemList",
-        params
+        params,
       );
       break;
     }

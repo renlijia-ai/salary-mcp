@@ -1,9 +1,9 @@
 import { Client } from "./client.js";
-import { apiPrefixMapping } from "../constants/index.js";
+import { apiPrefixMapping, ENV } from "../constants/index.js";
 import { convertExcelUrlToHtml } from "./utils.js";
 export const switchApi = async (request) => {
     const params = { ...request.params.arguments };
-    const client = new Client(params.rljN, apiPrefixMapping[params.env]);
+    const client = new Client(params.rljN, apiPrefixMapping[(ENV || "prod")]);
     let response;
     switch (request.params.name) {
         case "salaryGroup_get_excel_info": {

@@ -1,4 +1,4 @@
-import { AI_MCP_TOKEN } from "../constants/index.js";
+import {AI_MCP_Rlj_N, } from "../constants/index.js";
 
 // 总方法
 export class Client {
@@ -7,9 +7,9 @@ export class Client {
 
   constructor(rljN: string, baseUrl: string) {
     this.headers = {
-      "rlj-n": rljN,
+      "rlj-n": AI_MCP_Rlj_N!,
       "content-type": "application/json",
-      AI_MCP_TOKEN: AI_MCP_TOKEN!,
+      // AI_MCP_TOKEN: AI_MCP_TOKEN!,
     };
     this.baseUrl = baseUrl;
   }

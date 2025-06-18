@@ -2,23 +2,26 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 
 const getInputSchema = (
   properties: Tool["inputSchema"]["properties"],
-  required: string[]
+  required: string[],
 ): Tool["inputSchema"] => {
   return {
     type: "object",
     properties: {
-      rljN: {
-        type: "string",
-        description: "登录token",
-      },
-      env: {
-        type: "string",
-        description: "环境",
-        enum: ["prod", "pre", "test", "daily"],
-      },
+      // rljN: {
+      //   type: "string",
+      //   description: "登录token",
+      // },
+      // env: {
+      //   type: "string",
+      //   description: "环境",
+      //   enum: ["prod", "pre", "test", "daily"],
+      // },
       ...properties,
     },
-    required: ["rljN", "env", ...required],
+    required: [
+      // "rljN", "env",
+      ...required,
+    ],
   };
 };
 
@@ -35,7 +38,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "文件oss地址",
         },
       },
-      ["fileUrl"]
+      ["fileUrl"],
     ),
   },
   {
@@ -96,7 +99,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "薪资组名称",
         },
       },
-      []
+      [],
     ),
   },
   {
@@ -188,7 +191,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "薪资组id",
         },
       },
-      []
+      [],
     ),
   },
   {
@@ -331,7 +334,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId"]
+      ["salaryGroupId"],
     ),
   },
   {
@@ -404,7 +407,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      []
+      [],
     ),
   },
   {
@@ -419,7 +422,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "薪资组 id",
         },
       },
-      ["salaryGroupId"]
+      ["salaryGroupId"],
     ),
   },
   {
@@ -471,7 +474,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId", "salarySettingItemVO"]
+      ["salaryGroupId", "salarySettingItemVO"],
     ),
   },
   {
@@ -515,7 +518,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId", "salarySettingItemVO"]
+      ["salaryGroupId", "salarySettingItemVO"],
     ),
   },
   {
@@ -559,7 +562,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId", "salarySettingItemVO"]
+      ["salaryGroupId", "salarySettingItemVO"],
     ),
   },
   {
@@ -603,7 +606,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId", "salarySettingItemVO"]
+      ["salaryGroupId", "salarySettingItemVO"],
     ),
   },
   {
@@ -668,7 +671,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId", "salarySettingItemVO", "formula"]
+      ["salaryGroupId", "salarySettingItemVO", "formula"],
     ),
   },
   {
@@ -712,7 +715,7 @@ export const MAPS_TOOLS: Tool[] = [
           },
         },
       },
-      ["salaryGroupId", "salarySettingItemVO"]
+      ["salaryGroupId", "salarySettingItemVO"],
     ),
   },
   {
@@ -737,7 +740,7 @@ export const MAPS_TOOLS: Tool[] = [
     `,
         },
       },
-      []
+      [],
     ),
   },
   {
@@ -767,7 +770,7 @@ export const MAPS_TOOLS: Tool[] = [
 `,
         },
       },
-      []
+      [],
     ),
   },
 ] as const;

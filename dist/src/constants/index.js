@@ -4,4 +4,6 @@ export const apiPrefixMapping = {
     pre: "https://pre-salary.renlijia.com/rest/api",
     prod: "https:/salary.eapps.dingtalkcloud.com/rest/api",
 };
-export const AI_MCP_TOKEN = process.env.AI_MCP_TOKEN;
+// export const AI_MCP_TOKEN = process.env.AI_MCP_TOKEN;
+export const AI_MCP_Rlj_N = process.env.AI_MCP_Rlj_N;
+export const ENV = process.env.ENV;
