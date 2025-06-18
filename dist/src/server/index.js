@@ -16,7 +16,13 @@ export const switchApi = async (request) => {
                 page: 0,
                 pageSize: 30,
             });
-            response = { a: 2 };
+            if (res.success) {
+                res.result = res.result.startGroupList;
+                response = res;
+            }
+            else {
+                response = res;
+            }
             break;
         }
         case "salarySetting_querySalarySetting": {
