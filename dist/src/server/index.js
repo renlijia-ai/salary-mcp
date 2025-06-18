@@ -11,31 +11,31 @@ export const switchApi = async (request) => {
             break;
         }
         case "salaryGroup_indexList": {
-            response = await client.post("rest/api/v1/salaryGroup/indexList", params);
+            response = await client.post("v1/salaryGroup/indexList", params);
             break;
         }
         case "salarySetting_querySalarySetting": {
-            response = await client.post("rest/api/v2/salarySetting/querySalarySetting", params);
+            response = await client.post("v2/salarySetting/querySalarySetting", params);
             break;
         }
         case "salarySetting_saveSalaryItemList": {
-            response = await client.post("rest/api/v3/salarySetting/saveSalaryItemList", params);
+            response = await client.post("v3/salarySetting/saveSalaryItemList", params);
             break;
         }
         case "salaryBasePay_saveOneBasepayConfig": {
-            response = await client.post("rest/api/v1/salaryBasePay/saveOneBasepayConfig", params);
+            response = await client.post("v1/salaryBasePay/saveOneBasepayConfig", params);
             break;
         }
         case "salaryBasePay_queryConfig": {
-            response = await client.post("rest/api/v1/salaryBasePay/queryConfig", params);
+            response = await client.post("v1/salaryBasePay/queryConfig", params);
             break;
         }
         case "salaryBasePay_getHrmField": {
-            response = await client.post("rest/api/v1/salaryBasePay/getHrmField", params);
+            response = await client.post("v1/salaryBasePay/getHrmField", params);
             break;
         }
         case "salarySetting_getTemSalaryItemByAi": {
-            response = await client.post("rest/api/v1/salarySetting/getTemSalaryItemByAi", params);
+            response = await client.post("v1/salarySetting/getTemSalaryItemByAi", params);
             break;
         }
         case "salarySetting_saveSalaryItemList_hrm":
@@ -44,7 +44,7 @@ export const switchApi = async (request) => {
         case "salarySetting_saveSalaryItemList_floatingData":
         case "salarySetting_saveSalaryItemList_other":
         case "salarySetting_saveSalaryItemList_socialSecurityData": {
-            response = await client.post("rest/api/v3/salarySetting/saveSalaryItemList", params);
+            response = await client.post("v3/salarySetting/saveSalaryItemList", params);
             break;
         }
         default:

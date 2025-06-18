@@ -1,4 +1,4 @@
-import {AI_MCP_Rlj_N, } from "../constants/index.js";
+import { AI_MCP_Rlj_N } from "../constants/index.js";
 
 // 总方法
 export class Client {
