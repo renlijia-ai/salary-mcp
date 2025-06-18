@@ -7,7 +7,7 @@ export const switchApi = async (request: CallToolRequest) => {
   const params = { ...request.params.arguments };
   const client = new Client(
     params.rljN as string,
-    apiPrefixMapping[(ENV || "prod") as string],
+    apiPrefixMapping[(ENV || "prod") as string]
   );
 
   let response;
@@ -18,48 +18,42 @@ export const switchApi = async (request: CallToolRequest) => {
       break;
     }
     case "salaryGroup_indexList": {
-      response = await client.post("rest/api/v1/salaryGroup/indexList", params);
+      response = await client.post("v1/salaryGroup/indexList", params);
       break;
     }
     case "salarySetting_querySalarySetting": {
       response = await client.post(
-        "rest/api/v2/salarySetting/querySalarySetting",
-        params,
+        "v2/salarySetting/querySalarySetting",
+        params
       );
       break;
     }
     case "salarySetting_saveSalaryItemList": {
       response = await client.post(
-        "rest/api/v3/salarySetting/saveSalaryItemList",
-        params,
+        "v3/salarySetting/saveSalaryItemList",
+        params
       );
       break;
     }
     case "salaryBasePay_saveOneBasepayConfig": {
       response = await client.post(
-        "rest/api/v1/salaryBasePay/saveOneBasepayConfig",
-        params,
+        "v1/salaryBasePay/saveOneBasepayConfig",
+        params
       );
       break;
     }
     case "salaryBasePay_queryConfig": {
-      response = await client.post(
-        "rest/api/v1/salaryBasePay/queryConfig",
-        params,
-      );
+      response = await client.post("v1/salaryBasePay/queryConfig", params);
       break;
     }
     case "salaryBasePay_getHrmField": {
-      response = await client.post(
-        "rest/api/v1/salaryBasePay/getHrmField",
-        params,
-      );
+      response = await client.post("v1/salaryBasePay/getHrmField", params);
       break;
     }
     case "salarySetting_getTemSalaryItemByAi": {
       response = await client.post(
-        "rest/api/v1/salarySetting/getTemSalaryItemByAi",
-        params,
+        "v1/salarySetting/getTemSalaryItemByAi",
+        params
       );
       break;
     }
@@ -70,8 +64,8 @@ export const switchApi = async (request: CallToolRequest) => {
     case "salarySetting_saveSalaryItemList_other":
     case "salarySetting_saveSalaryItemList_socialSecurityData": {
       response = await client.post(
-        "rest/api/v3/salarySetting/saveSalaryItemList",
-        params,
+        "v3/salarySetting/saveSalaryItemList",
+        params
       );
       break;
     }

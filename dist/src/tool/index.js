@@ -34,45 +34,154 @@ export const MAPS_TOOLS = [
     },
     {
         name: "salaryGroup_indexList",
-        description: `薪资组列表信息 、可以通过薪资组名称搜索薪资组信息
-    返回值 {
-    "currentCalBizId": "202504M",
-    "hasMore": true,
-    "nextCalBizId": "202505M",
-    "page": 0,
-    "pageSize": 20,
-    "previousCalBizId": "202503M",
-    "proTips": false,
-    "showSalaryCalNewGuide": true,
-    "startGroupList": [
-        {
-            "authCode": 2,
-            "calBizId": "202504M",
-            "calVersion": 1,
-            "gotoSetting": "done",
-            "isLocked": false,
-            "needRecalculate": false,
-            "newTaxRule": "1",
-            "operate": false,
-            "salaryGroupId": "2b7f03e196274d79a98eb8c48d19754a",
-            "salaryGroupName": "0304陈祥豪OA宜搭",
-            "salaryPeriodType": 0,
-            "setting": true,
-            "settingPeriod": true
+        description: `薪资组列表信息，可以通过薪资组名称搜索薪资组信息
+    返回值
+    {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "currentCalBizId": {
+          "type": "string",
+          "description": "当前薪资月, 格式yyyyMMM，比如202503M，代表2025年3月"
+        },
+        "hasMore": {
+          "type": "boolean",
+          "description": "是否还有更多的薪资组，因为是列表滚动触底加载更多"
+        },
+        "nextCalBizId": {
+          "type": "string",
+          "description": "下一个薪资月，格式yyyyMMM，比如202504M，代表2025年4月"
+        },
+        "page": {
+          "type": "string",
+          "description": "分页信息"
+        },
+        "pageSize": {
+          "type": "number",
+          "description": "每页数量"
+        },
+        "previousCalBizId": {
+          "type": "string",
+          "description": "上一个薪资月，格式yyyyMMM，比如202502M，代表2025年2月"
+        },
+        "proTips": {
+          "type": "string"
+        },
+        "showSalaryCalNewGuide": {
+          "type": "boolean"
+        },
+        "startGroupList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [],
+            "properties": {
+              "authCode": {
+                "type": "number",
+                "description": "权限 => 0:无权限 1:仅查看 2:操作"
+              },
+              "calBizId": {
+                "type": "string",
+                "description": "薪资月，格式yyyyMMM，比如202503M，代表2025年3月"
+              },
+              "calVersion": {
+                "type": "number"
+              },
+              "gotoSetting": {
+                "type": "string",
+                "description": "跳转的设置页面 done:已完成新建流程 其他则表示薪资组尚未创建完成"
+              },
+              "isLocked": {
+                "type": "boolean",
+                "description": "是否锁定"
+              },
+              "needRecalculate": {
+                "type": "boolean",
+                "description": "是否需要重新计算"
+              },
+              "newTaxRule": {
+                "type": "string",
+              },
+              "operate": {
+                "type": "string"
+              },
+              "salaryGroupId": {
+                "type": "string",
+                "description": "薪资组id"
+              },
+              "salaryGroupName": {
+                "type": "string",
+                "description": "薪资组名称"
+              },
+              "salaryPeriodType": {
+                "type": "string"
+              },
+              "setting": {
+                "type": "boolean"
+              },
+              "settingPeriod": {
+                "type": "boolean"
+              },
+              "statisticsData": {
+                "type": "array",
+                "description": "统计项相关信息",
+                "items": {
+                  "type": "object",
+                  "required": [],
+                  "properties": {
+                    "itemDesc": {
+                      "type": "string",
+                      "description": "统计项描述"
+                    },
+                    "itemId": {
+                      "type": "string",
+                      "description": "统计项id"
+                    },
+                    "itemName": {
+                      "type": "string",
+                      "description": "统计项名称"
+                    },
+                    "sValue": {
+                      "type": "string",
+                      "description": "统计项数据（值），带unit格式化后的值"
+                    },
+                    "unit": {
+                      "type": "string"
+                      "description": "统计项单位"
+                    },
+                    "value": {
+                      "type": "number",
+                      "description": "统计项数据（值），数字的统计项值"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "statisticCurrentMonth": {
+          "type": "string",
+          description: "统计当前月，格式yyyy年MMM月"
+        },
+        "stopGroupList": {
+          "type": "array",
+          "items": {
+            "type": "string",
+          }
+        },
+        "totalCount": {
+          "type": "number"
+        },
+        "unCalGroupNum": {
+          "type": "number"
         }
-    ],
-    "statisticCurrentMonth": "2025年04月",
-    "stopGroupList": [
-
-    ],
-    "totalCount": 156,
-    "unCalGroupNum": 3
-}
+      }
+    }
     `,
         inputSchema: getInputSchema({
             calBizId: {
                 type: "string",
-                description: "薪资月",
+                description: "薪资月，格式yyyyMMM，比如202503M，代表2025年3月",
             },
             page: {
                 type: "number",
@@ -88,7 +197,7 @@ export const MAPS_TOOLS = [
                 type: "string",
                 description: "薪资组名称",
             },
-        }, []),
+        }, ["calBizId"]),
     },
     {
         name: "salarySetting_querySalarySetting",
