@@ -18,7 +18,12 @@ export const switchApi = async (request: CallToolRequest) => {
       break;
     }
     case "salaryGroup_indexList": {
-      response = await client.post("v1/salaryGroup/indexList", params);
+      const res = await client.post("v1/salaryGroup/indexList", {
+        ...params,
+        page: 0,
+        pageSize: 30,
+      });
+      response = { a: 2 };
       break;
     }
     case "salarySetting_querySalarySetting": {

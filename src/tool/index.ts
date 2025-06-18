@@ -193,16 +193,16 @@ export const MAPS_TOOLS: Tool[] = [
           type: "string",
           description: "薪资月，格式yyyyMMM，比如202503M，代表2025年3月",
         },
-        page: {
-          type: "number",
-          description: "分页信息, 默认值为0",
-          default: 0,
-        },
-        pageSize: {
-          type: "number",
-          description: "每页数量, 默认值为30",
-          default: 30,
-        },
+        // page: {
+        //   type: "number",
+        //   description: "分页信息, 默认值为0",
+        //   default: 0,
+        // },
+        // pageSize: {
+        //   type: "number",
+        //   description: "每页数量, 默认值为30",
+        //   default: 30,
+        // },
         search: {
           type: "string",
           description: "薪资组名称",
