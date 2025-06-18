@@ -195,12 +195,12 @@ export const MAPS_TOOLS: Tool[] = [
         },
         page: {
           type: "number",
-          description: "分页信息",
+          description: "分页信息, 默认值为0",
           default: 0,
         },
         pageSize: {
           type: "number",
-          description: "每页数量",
+          description: "每页数量, 默认值为30",
           default: 30,
         },
         search: {
