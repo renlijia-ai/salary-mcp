@@ -24,7 +24,7 @@ export const switchApi = async (request: CallToolRequest) => {
         pageSize: 30,
       });
       if (res.success) {
-        res.result = res.result.startGroupList;
+        res.result = JSON.stringify(res.result);
         response = res;
       } else {
         response = res;
