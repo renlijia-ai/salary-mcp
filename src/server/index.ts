@@ -34,6 +34,12 @@ export const switchApi = async (request: CallToolRequest) => {
       }
       break;
     }
+    case "salaryGroup_tableData": {
+      response = await client.post("v1/salaryGroup/tableData", {
+        ...params,
+      });
+      break;
+    }
     default:
       throw new Error(`Unknown tool: ${request.params.name}`);
   }
