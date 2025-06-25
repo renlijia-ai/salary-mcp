@@ -1,6 +1,6 @@
 {
   "name": "@rlj/salary-mcp",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "MCP server for using the salary Web API",
   "license": "MIT",
   "homepage": "",
