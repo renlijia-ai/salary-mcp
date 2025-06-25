@@ -1,7 +1,7 @@
 import { CallToolRequest } from "@modelcontextprotocol/sdk/types.js";
 import { Client } from "./client.js";
 import { apiPrefixMapping, ENV } from "../constants/index.js";
-import { convertExcelUrlToHtml } from "./utils.js";
+import { convertMarkdownToPdfAndUpload } from "./pdf.js";
 
 export const switchApi = async (request: CallToolRequest) => {
   const params = { ...request.params.arguments };
@@ -13,8 +13,14 @@ export const switchApi = async (request: CallToolRequest) => {
   let response;
 
   switch (request.params.name) {
-    case "salaryGroup_get_excel_info": {
-      response = await convertExcelUrlToHtml(params.fileUrl as string);
+    case "salaryGroup_generate_pdf": {
+      const pdfUrl = await convertMarkdownToPdfAndUpload(
+        params.markdownText as string
+      );
+      response = {
+        success: true,
+        result: { pdfUrl },
+      };
       break;
     }
     case "salaryGroup_indexList": {
@@ -43,7 +49,6 @@ export const switchApi = async (request: CallToolRequest) => {
     default:
       throw new Error(`Unknown tool: ${request.params.name}`);
   }
-
   return {
     content: [
       {

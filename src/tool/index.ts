@@ -27,6 +27,27 @@ const getInputSchema = (
 
 export const MAPS_TOOLS: Tool[] = [
   {
+    name: "salaryGroup_generate_pdf",
+    description: `将Markdown文本转换为PDF并获取下载链接
+    返回值:
+    {
+      "success": true,
+      "result": {
+        "pdfUrl": "string" // 上传后的PDF文件URL
+      }
+    }
+    `,
+    inputSchema: getInputSchema(
+      {
+        markdownText: {
+          type: "string",
+          description: "需要转换的Markdown文本内容",
+        },
+      },
+      ["markdownText"]
+    ),
+  },
+  {
     name: "salaryGroup_get_excel_info",
     description: `获取excel的sheet的信息
     返回值: 包含所有的sheet信息，以字符串的形式返回

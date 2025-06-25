@@ -1,13 +1,17 @@
 import { Client } from "./client.js";
 import { apiPrefixMapping, ENV } from "../constants/index.js";
-import { convertExcelUrlToHtml } from "./utils.js";
+import { convertMarkdownToPdfAndUpload } from "./pdf.js";
 export const switchApi = async (request) => {
     const params = { ...request.params.arguments };
     const client = new Client(params.rljN, apiPrefixMapping[(ENV || "prod")]);
     let response;
     switch (request.params.name) {
-        case "salaryGroup_get_excel_info": {
-            response = await convertExcelUrlToHtml(params.fileUrl);
+        case "salaryGroup_generate_pdf": {
+            const pdfUrl = await convertMarkdownToPdfAndUpload(params.markdownText);
+            response = {
+                success: true,
+                result: { pdfUrl },
+            };
             break;
         }
         case "salaryGroup_indexList": {
