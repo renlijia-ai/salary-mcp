@@ -14,48 +14,18 @@ export const switchApi = async (request) => {
             const res = await client.post("v1/salaryGroup/indexList", {
                 ...params,
                 page: 0,
-                pageSize: 30,
+                pageSize: 20,
             });
             if (res.success) {
-                res.result = JSON.stringify(res.result);
+                res.result = res.result.startGroupList.map((v) => ({
+                    statisticsDataOverview: v.statisticsDataOverview,
+                    salaryGroupName: v.salaryGroupName,
+                }));
                 response = res;
             }
             else {
                 response = res;
             }
-            break;
-        }
-        case "salarySetting_querySalarySetting": {
-            response = await client.post("v2/salarySetting/querySalarySetting", params);
-            break;
-        }
-        case "salarySetting_saveSalaryItemList": {
-            response = await client.post("v3/salarySetting/saveSalaryItemList", params);
-            break;
-        }
-        case "salaryBasePay_saveOneBasepayConfig": {
-            response = await client.post("v1/salaryBasePay/saveOneBasepayConfig", params);
-            break;
-        }
-        case "salaryBasePay_queryConfig": {
-            response = await client.post("v1/salaryBasePay/queryConfig", params);
-            break;
-        }
-        case "salaryBasePay_getHrmField": {
-            response = await client.post("v1/salaryBasePay/getHrmField", params);
-            break;
-        }
-        case "salarySetting_getTemSalaryItemByAi": {
-            response = await client.post("v1/salarySetting/getTemSalaryItemByAi", params);
-            break;
-        }
-        case "salarySetting_saveSalaryItemList_hrm":
-        case "salarySetting_saveSalaryItemList_basePay":
-        case "salarySetting_saveSalaryItemList_act":
-        case "salarySetting_saveSalaryItemList_floatingData":
-        case "salarySetting_saveSalaryItemList_other":
-        case "salarySetting_saveSalaryItemList_socialSecurityData": {
-            response = await client.post("v3/salarySetting/saveSalaryItemList", params);
             break;
         }
         default:
@@ -65,7 +35,7 @@ export const switchApi = async (request) => {
         content: [
             {
                 type: "text",
-                text: `${JSON.stringify(response, null, 2)}`,
+                text: `${JSON.stringify(response)}`,
             },
         ],
         isError: !response.success,

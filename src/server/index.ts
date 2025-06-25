@@ -21,10 +21,13 @@ export const switchApi = async (request: CallToolRequest) => {
       const res = await client.post("v1/salaryGroup/indexList", {
         ...params,
         page: 0,
-        pageSize: 30,
+        pageSize: 20,
       });
       if (res.success) {
-        res.result = JSON.stringify(res.result);
+        res.result = res.result.startGroupList.map((v: any) => ({
+          statisticsDataOverview: v.statisticsDataOverview,
+          salaryGroupName: v.salaryGroupName,
+        }));
         response = res;
       } else {
         response = res;
@@ -39,7 +42,7 @@ export const switchApi = async (request: CallToolRequest) => {
     content: [
       {
         type: "text",
-        text: `${JSON.stringify(response, null, 2)}`,
+        text: `${JSON.stringify(response)}`,
       },
     ],
     isError: !response.success,
