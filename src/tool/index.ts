@@ -2,7 +2,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 
 const getInputSchema = (
   properties: Tool["inputSchema"]["properties"],
-  required: string[]
+  required: string[],
 ): Tool["inputSchema"] => {
   return {
     type: "object",
@@ -27,7 +27,7 @@ const getInputSchema = (
 
 export const MAPS_TOOLS: Tool[] = [
   {
-    name: "salaryGroup_generate_pdf",
+    name: "salaryGroup_mk2pdf",
     description: `将Markdown文本转换为PDF并获取下载链接
     返回值:
     {
@@ -44,7 +44,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "需要转换的Markdown文本内容",
         },
       },
-      ["markdownText"]
+      ["markdownText"],
     ),
   },
   {
@@ -125,7 +125,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "薪资组名称",
         },
       },
-      ["calBizId"]
+      ["calBizId"],
     ),
   },
   {
@@ -322,7 +322,7 @@ export const MAPS_TOOLS: Tool[] = [
           description: "薪资月，格式yyyyMMM，比如202503M，代表2025年3月",
         },
       },
-      ["systemMonth"]
+      ["systemMonth"],
     ),
   },
 ] as const;

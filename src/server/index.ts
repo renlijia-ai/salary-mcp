@@ -7,15 +7,15 @@ export const switchApi = async (request: CallToolRequest) => {
   const params = { ...request.params.arguments };
   const client = new Client(
     params.rljN as string,
-    apiPrefixMapping[(ENV || "prod") as string]
+    apiPrefixMapping[(ENV || "prod") as string],
   );
 
   let response;
 
   switch (request.params.name) {
-    case "salaryGroup_generate_pdf": {
+    case "salaryGroup_mk2pdf": {
       const pdfUrl = await convertMarkdownToPdfAndUpload(
-        params.markdownText as string
+        params.markdownText as string,
       );
       response = {
         success: true,

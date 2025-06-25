@@ -21,7 +21,7 @@ const getInputSchema = (properties, required) => {
 };
 export const MAPS_TOOLS = [
     {
-        name: "salaryGroup_generate_pdf",
+        name: "salaryGroup_mk2pdf",
         description: `将Markdown文本转换为PDF并获取下载链接
     返回值:
     {

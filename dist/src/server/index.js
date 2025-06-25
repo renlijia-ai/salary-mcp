@@ -6,7 +6,7 @@ export const switchApi = async (request) => {
     const client = new Client(params.rljN, apiPrefixMapping[(ENV || "prod")]);
     let response;
     switch (request.params.name) {
-        case "salaryGroup_generate_pdf": {
+        case "salaryGroup_mk2pdf": {
             const pdfUrl = await convertMarkdownToPdfAndUpload(params.markdownText);
             response = {
                 success: true,

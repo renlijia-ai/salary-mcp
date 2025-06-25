@@ -1,41 +1,15 @@
-import fetch, { FormData } from "node-fetch";
-import { marked } from "marked";
-import { AI_MCP_Tms } from "../constants/index.js";
-import htmlPdf from "html-pdf";
-
-// 将流转换成 buffer 的函数
-function streamToBuffer(html: string) {
-  return new Promise((resolve, reject) => {
-    htmlPdf.create(html, {}).toBuffer(function (err, res) {
-      resolve(res);
-    });
-  });
-}
+import fetch from "node-fetch";
 
 export async function convertMarkdownToPdfAndUpload(markdownText: string) {
-  // 将Markdown转换为HTML
-  const html: any = marked(markdownText);
-
-  const pdfBuffer: any = await streamToBuffer(html);
-  // console.log(pdfBuffer, "ressss");
-
   try {
-    const formData = new FormData();
-    formData.append(
-      "file",
-      new Blob([pdfBuffer], { type: "application/pdf" }),
-      "document.pdf"
-    );
-
     const response = await fetch(
-      "http://tps.renlijia.com/openapi/file/upload",
+      "https://monitor.renlijia.com/xiao/proxy/mk2pdf",
       {
         method: "POST",
-        headers: {
-          token: AI_MCP_Tms!,
-        },
-        body: formData,
-      }
+        body: JSON.stringify({
+          text: markdownText,
+        }),
+      },
     );
 
     if (!response.ok) {
@@ -43,7 +17,6 @@ export async function convertMarkdownToPdfAndUpload(markdownText: string) {
     }
 
     const result: any = await response.json();
-    // console.log(result, "resultresultresult");
 
     return result.result.url;
   } catch (error) {
@@ -51,5 +24,3 @@ export async function convertMarkdownToPdfAndUpload(markdownText: string) {
     throw error;
   }
 }
-
-// convertMarkdownToPdfAndUpload("## ffff");
