@@ -39,18 +39,6 @@ export const MAPS_TOOLS = [
         }, ["markdownText"]),
     },
     {
-        name: "salaryGroup_get_excel_info",
-        description: `获取excel的sheet的信息
-    返回值: 包含所有的sheet信息，以字符串的形式返回
-    `,
-        inputSchema: getInputSchema({
-            fileUrl: {
-                type: "string",
-                description: "文件oss地址",
-            },
-        }, ["fileUrl"]),
-    },
-    {
         name: "salaryGroup_indexList",
         description: `薪资组列表信息，可以通过薪资组名称搜索薪资组信息
     返回值
