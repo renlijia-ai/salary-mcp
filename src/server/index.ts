@@ -35,7 +35,7 @@ export const switchApi = async (request: CallToolRequest) => {
       break;
     }
     case "salaryGroup_tableData": {
-      response = await client.post("v1/salaryGroup/tableData", {
+      response = await client.post("v1/reports/tableData", {
         ...params,
       });
       break;
